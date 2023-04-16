@@ -4,6 +4,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.BsonDocument;
+
 public static void main(String args[]) {
   // Set system properties via commandline or programmatically
   System.setProperty("javax.net.ssl.keyStore", "<path_to_keystore>");
