@@ -1,0 +1,9 @@
+<div *ngIf="article; else notFound">
+    <h2>{{article.title}}</h2>
+    <h3>{{article.date}}</h3>
+    <p>{{article.body}}</p>
+</div>
+
+<ng-template #notFound>
+    <h3>Article not found!</h3>
+</ng-template>
