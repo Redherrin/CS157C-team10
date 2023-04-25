@@ -10,7 +10,7 @@ import com.mongodb.client.MongoDatabase;
 @Configuration
 public class MongoConnection {
 	
-	@Bean
+	/*@Bean
     public MongoClient mongoClient() {
         return MongoClients.create("mongodb://localhost:27017");
     }
@@ -18,11 +18,11 @@ public class MongoConnection {
 	@Bean
 	public MongoDatabase mongoDatabase() {
 	    return mongoClient().getDatabase("all_your_rock");
-	}
+	}*/
 	
 	
 	@Bean
     public MongoTemplate mongoTemplate() throws Exception {
-		return new MongoTemplate(mongoClient(), "all_your_rock");
+		return new MongoTemplate(MongoClients.create("mongodb://localhost:27017"), "all_your_rock");
     }
 }

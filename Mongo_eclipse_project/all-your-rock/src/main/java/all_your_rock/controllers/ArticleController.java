@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,7 @@ import com.mongodb.client.MongoDatabase;
 
 @RestController
 @RequestMapping("/articles")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ArticleController {
 	
 	private MongoCollection<Article> articles;
@@ -33,9 +36,9 @@ public class ArticleController {
 	private ArticleService articleService;
 	
 	@Autowired
-    public ArticleController(MongoDatabase db, ArticleService articleService) {
-        this.db = db; 
-        this.articles = db.getCollection("articles", Article.class);
+    public ArticleController(ArticleService articleService) {
+        //this.db = db; 
+        //this.articles = db.getCollection("articles", Article.class);
         this.articleService = articleService;
     }
 	
@@ -66,6 +69,16 @@ public class ArticleController {
 			System.out.println(e.getMessage());
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Article> deleteArticle(@PathVariable("id") String id){
+		try {
+			articleService.deleteArticle(id);
+			return new ResponseEntity<Article>(HttpStatus.OK);
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 }
