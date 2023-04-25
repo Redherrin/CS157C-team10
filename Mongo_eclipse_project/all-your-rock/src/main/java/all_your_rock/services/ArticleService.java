@@ -36,9 +36,19 @@ public class ArticleService {
         return article;
     }
 
-    public Article updateArticle(String id, Article article) {
-    	article.setId(id);
-        return mongoTemplate.save(article);
+    public Article updateArticle(String id, Article article) throws Exception {
+    	Query query = new Query(Criteria.where("_id").is(id));
+        Article updatedArticle = mongoTemplate.findOne(query, Article.class);
+        
+        if(updatedArticle == null) {
+        	throw new Exception("Article does not exist with id " + id);
+        }
+        
+        updatedArticle.setTitle(article.getTitle());
+    	updatedArticle.setAuthor(article.getAuthor());
+    	updatedArticle.setContent(article.getContent());
+    	
+        return mongoTemplate.save(updatedArticle);
     }
 
     public void deleteArticle(String id) {

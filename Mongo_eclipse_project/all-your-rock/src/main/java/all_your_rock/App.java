@@ -14,7 +14,6 @@ public class App {
 	//npx kill-port 8080
 	public static void main(String args[]) {
 		SpringApplication.run(App.class, args);
-		
 	}
 	
 }

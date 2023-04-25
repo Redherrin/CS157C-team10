@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,6 @@ public class ArticleController {
 	@GetMapping
 	public ResponseEntity<List<Article>> getArticles() {
         List<Article> articleList = articleService.findAllArticles();
-        System.out.println(articleList.size());
         return new ResponseEntity<>(articleList, HttpStatus.OK);
     }
 	
@@ -55,5 +55,17 @@ public class ArticleController {
 	public ResponseEntity<Article> createArticle(@RequestBody Article article) {
 		Article newArticle = articleService.createArticle(article);
 		return new ResponseEntity<Article>(newArticle, HttpStatus.CREATED);
+	}
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Article> updateArticle(@PathVariable("id") String id, @RequestBody Article article){
+		try{
+			Article updatedArticle = articleService.updateArticle(id, article);
+			return new ResponseEntity<Article>(updatedArticle, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
 	}
 }
