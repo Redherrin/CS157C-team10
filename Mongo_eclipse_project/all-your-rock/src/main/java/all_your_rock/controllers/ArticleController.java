@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import all_your_rock.models.Article;
 import all_your_rock.services.ArticleService;
 
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
