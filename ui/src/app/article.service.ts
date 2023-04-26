@@ -25,4 +25,9 @@ export class ArticleService {
     //return of(article);
     return this.http.get<Article>(`${this.articleUrl}/${id}`);
   }
+
+  createArticle(article: Article): Observable<Article>{
+    article.date = new Date().toISOString();
+    return this.http.post<Article>(`${this.articleUrl}/add`, article);
+  }
 }

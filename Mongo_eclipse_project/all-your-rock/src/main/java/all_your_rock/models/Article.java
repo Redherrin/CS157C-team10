@@ -8,6 +8,7 @@ public class Article {
 	
 	@Id
 	private String id;
+	
 	private String title;
 	private String author;
 	private String body;

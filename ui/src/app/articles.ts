@@ -3,7 +3,7 @@ import { Article } from "./article";
 export const ARTICLES: Article[] = [
 {
 	id: '1',
-	userId: 2,
+	userId: '2',
 	title: 'The Rock of Penguins',
 	author: 'X',
 	body: 'This is a test body!',
@@ -11,7 +11,7 @@ export const ARTICLES: Article[] = [
 },
 {
 	id: '2',
-	userId: 1,
+	userId: '1',
 	title: 'WTM @ Zepp Tokyo',
 	author: 'X',
 	body: 'Wow that\'s totally a test post...',
@@ -19,7 +19,7 @@ export const ARTICLES: Article[] = [
 },
 {
 	id: '3',
-	userId: 2,
+	userId: '2',
 	title: 'Mellow Hollow',
 	author: 'X',
 	body: 'Another test post!? I don\'t believe it...',

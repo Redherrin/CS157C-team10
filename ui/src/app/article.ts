@@ -1,6 +1,6 @@
 export interface Article {
 	id: String;
-	userId: number;
+	userId: String;
 	title: string;
 	author: string;
 	body: string;
