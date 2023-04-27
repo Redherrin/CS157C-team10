@@ -1,0 +1,54 @@
+.homepage{
+    position: relative;
+}
+.article-table{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);;
+    grid-gap: 2%;
+    padding-top: 2%;
+    padding-right: 22%;
+    max-width: 78%;
+}
+.article-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+}
+.article-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 85%;
+    color: darkblue;
+}
+.article{
+    border: 1px solid black;
+    padding: 2%;
+}
+
+.article-link {
+    display: block;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+.search-container {
+    position: absolute;
+    border: 1px solid black;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 5%;
+    left: 80%;
+    height: 90%;
+    width: 20%;
+    max-width: 20%;
+}
+.form-input {
+    width: 80%;
+}
+.textarea {
+    resize: none;
+    width: 95%;
+    height: 250px;
+}

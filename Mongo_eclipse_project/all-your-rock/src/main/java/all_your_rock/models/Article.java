@@ -13,6 +13,7 @@ public class Article {
 	private String author;
 	private String body;
 	private String date;
+	private String lastUpdatedDate;
 	
 	public String getId() {return id;}
 	public void setId(String id) {this.id = id;}
@@ -28,5 +29,8 @@ public class Article {
 	
 	public String getDate() {return date;}
 	public void setDate(String date) {this.date = date;}
+	
+	public String getLastUpdatedDate() {return lastUpdatedDate;}
+	public void setLastUpdatedDate(String lastUpdatedDate) {this.lastUpdatedDate = lastUpdatedDate;}
 	
 }

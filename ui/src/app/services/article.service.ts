@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { Article } from './article';
+import { Article } from '../models/article';
 //import { ARTICLES } from './articles';
 
 @Injectable({
@@ -29,5 +29,17 @@ export class ArticleService {
   createArticle(article: Article): Observable<Article>{
     article.date = new Date().toISOString();
     return this.http.post<Article>(`${this.articleUrl}/add`, article);
+  }
+
+  updateArticle(id: String, article: Article): Observable<Article>{
+    article.lastUpdatedDate = new Date().toISOString();
+    console.log(article.lastUpdatedDate);
+    return this.http.put<Article>(`${this.articleUrl}/update/${id}`, article);
+  }
+
+  deleteArticle(id: String): Observable<Article>{
+    //const article =  ARTICLES.find( a => a.id === id)!;
+    //return of(article);
+    return this.http.delete<Article>(`${this.articleUrl}/delete/${id}`);
   }
 }

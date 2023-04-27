@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from '../../app-routing.module';
 
-import { Article } from '../article';
-import { ArticleService } from '../article.service';
+import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article.service';
+import { Router } from '@angular/Router';
 
 @Component({
   selector: 'app-home-article-list',
@@ -16,12 +17,14 @@ export class HomeArticleListComponent implements OnInit{
     userId: '',
     title: '',
     date: '',
+    lastUpdatedDate: '',
     author: '',
     body: ''
   };
 
   constructor(
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private router: Router
   ) {}
 
   ngOnInit(): void{
@@ -30,7 +33,7 @@ export class HomeArticleListComponent implements OnInit{
 
   getArticles(): void{
     this.articleService.getArticles()
-      .subscribe(articles => this.articles = articles);
+      .subscribe(articles => this.articles = articles.reverse());
   }
 
   saveArticle(): void {
@@ -39,5 +42,16 @@ export class HomeArticleListComponent implements OnInit{
         this.article = savedArticle;
         this.getArticles();
       });
+  }
+
+  updateArticle(id: String): void{
+    this.router.navigate(['/update', id]);
+  }
+
+  deleteArticle(id: String): void{
+    if(window.confirm('Are you sure you want to delete this article?')){
+      this.articles = this.articles.filter(tempArticle => tempArticle.id !== id);
+      this.articleService.deleteArticle(id).subscribe();
+    }
   }
 }

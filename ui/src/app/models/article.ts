@@ -5,4 +5,5 @@ export interface Article {
 	author: string;
 	body: string;
 	date: string;
+	lastUpdatedDate: string;
 }

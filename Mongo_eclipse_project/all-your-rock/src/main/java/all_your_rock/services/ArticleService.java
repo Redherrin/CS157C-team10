@@ -48,6 +48,7 @@ public class ArticleService {
     	updatedArticle.setAuthor(article.getAuthor());
     	updatedArticle.setBody(article.getBody());
     	updatedArticle.setDate(article.getDate());
+    	updatedArticle.setLastUpdatedDate(article.getLastUpdatedDate());
     	
         return mongoTemplate.save(updatedArticle);
     }

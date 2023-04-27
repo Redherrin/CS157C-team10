@@ -1,5 +1,13 @@
-<h3>Create an Article</h3>
-<form (submit)="saveArticle()">
+<div>
+    <h2>{{article.title}}</h2>
+    <h3>Written by {{article.author}}</h3>
+    <div>
+        Created: {{article.date | date:'MMMM d, y h:mm a'}}
+        <div *ngIf="article.lastUpdatedDate">Last Updated: {{article.lastUpdatedDate | date:'MMMM d, y h:mm a'}}</div>
+    </div>
+    <p>{{article.body}}</p>
+</div>
+<form (submit)="updateArticle()">
     <label for="title">Title: </label>
     <input type="text" id="title" name="title" [(ngModel)]="article.title">
 
@@ -11,20 +19,3 @@
 
     <button type="submit">Submit</button>
 </form>
-<div *ngFor="let article of articles">
-    <h1>
-        <a routerLink="/read/{{article.id}}">
-            {{ article.title }}
-        </a>
-    </h1>
-    <p>
-        {{ article.date | date:'MMMM d, y h:mm a' }}
-    </p>
-    <p>
-        {{ article.author }}
-    </p>
-    <p>
-        {{ article.body }}
-    </p>
-    <br>
-</div>
