@@ -1,7 +1,9 @@
 export interface Article {
-	id: number;
-	userId: number;
+	id: String;
+	userId: String;
 	title: string;
+	author: string;
 	body: string;
 	date: string;
+	lastUpdatedDate: string;
 }

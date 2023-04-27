@@ -1,0 +1,35 @@
+<html>
+    <div class="homepage">   
+        <div class="search-container">
+            <h3>Search by keywords/tags</h3>
+            <form>
+                <input type="text" placeholder="Search for...">
+                <button type="submit">Search</button>
+            </form>
+            
+        </div>
+        <div class="article-table">
+            <div class="" *ngFor="let article of articles">
+                <div class="article">
+                    <a class='article-link' routerLink="/read/{{article.id}}">
+                    <h1 class="article-title">
+                            {{ article.title }}
+                    </h1>
+                    <div class="article-text">
+                        Created: {{ article.date | date:'MMMM d, y h:mm a'}}
+                        <div *ngIf="article.lastUpdatedDate">Last Updated: {{article.lastUpdatedDate | date:'MMMM d, y h:mm a'}}</div>
+                    </div>
+                    <p class="article-text">
+                        Written by: {{ article.author }}
+                    </p>
+                    </a>
+                    <br>
+                </div>
+                <div class="article-buttons">
+                    <button (click)="updateArticle(article.id)">Edit</button>
+                    <button (click)="deleteArticle(article.id)">Delete</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+</html>

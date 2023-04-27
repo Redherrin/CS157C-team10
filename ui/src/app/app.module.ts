@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { ArticleComponent } from './article/article.component';
-import { HomeArticleListComponent } from './home-article-list/home-article-list.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppComponent } from './components/app.component';
+import { ArticleComponent } from './components/home-article-list/article/article.component';
+import { HomeArticleListComponent } from './components/home-article-list/home-article-list.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ArticleUpdaterComponent } from './components/home-article-list/article-updater/article-updater.component';
+import { CreateFormComponent } from './components/create-form/create-form.component';
 
 
 @NgModule({
@@ -13,11 +17,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppComponent,
     ArticleComponent,
     HomeArticleListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ArticleUpdaterComponent,
+    CreateFormComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,9 @@
+<div class="article-form">
+    <h2>Create an Article</h2>
+    <form (submit)="saveArticle()">
+        <input type="text" id="title" name="title" placeholder="Title..." class="form-input" [(ngModel)]="article.title">
+        <input type="text" id="author" name="author" placeholder="Author..." class="form-input" [(ngModel)]="article.author">
+        <textarea id="body" name="body" placeholder="Body..." class="textarea" [(ngModel)]="article.body"></textarea>
+        <div><button type="submit">Submit</button></div>
+    </form>
+</div>

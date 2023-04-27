@@ -1,0 +1,31 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.bar-left {
+    float: left;
+}
+.bar-right {
+    float: right;
+    background-color: #1e7898;
+}
+.bar-right a:hover{
+    float: right;
+    background-color: #1a6985;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
