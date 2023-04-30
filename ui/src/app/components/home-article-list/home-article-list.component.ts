@@ -54,4 +54,8 @@ export class HomeArticleListComponent implements OnInit{
       this.articleService.deleteArticle(id).subscribe();
     }
   }
+
+  onSubmit(searchString: String): void{
+      this.router.navigate(['/search', searchString]);
+  }
 }

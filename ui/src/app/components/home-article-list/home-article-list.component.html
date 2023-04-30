@@ -2,8 +2,8 @@
     <div class="homepage">   
         <div class="search-container">
             <h3>Search by keywords/tags</h3>
-            <form>
-                <input type="text" placeholder="Search for...">
+            <form (ngSubmit)="onSubmit(searchString.value)">
+                <input type="text" placeholder="Search for..." name="searchString" #searchString>
                 <button type="submit">Search</button>
             </form>
             

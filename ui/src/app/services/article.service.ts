@@ -42,4 +42,8 @@ export class ArticleService {
     //return of(article);
     return this.http.delete<Article>(`${this.articleUrl}/delete/${id}`);
   }
+
+  getArticleByKeyword(searchString: String): Observable<Article[]>{
+    return this.http.get<Article[]>(`${this.articleUrl}/search/${searchString}`);
+  }
 }

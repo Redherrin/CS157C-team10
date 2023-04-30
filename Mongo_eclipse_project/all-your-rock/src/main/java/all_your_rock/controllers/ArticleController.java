@@ -81,4 +81,10 @@ public class ArticleController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@GetMapping("/search/{query}")
+	public ResponseEntity<List<Article>> getArticlesByKeyword(@PathVariable("query") String searchString) {
+        List<Article> articleMatches = articleService.findArticlesByKeyword(searchString);
+        return new ResponseEntity<>(articleMatches, HttpStatus.OK);
+    }
 }

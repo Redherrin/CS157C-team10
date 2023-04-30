@@ -7,6 +7,7 @@ import { ArticleComponent } from './components/home-article-list/article/article
 import { CreateFormComponent } from './components/create-form/create-form.component';
 import { ArticleUpdaterComponent } from './components/home-article-list/article-updater/article-updater.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SearchPageComponent } from './components/search-page/search-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'read/:id', component: ArticleComponent},
   {path: 'create', component: CreateFormComponent},
   {path: 'update/:id', component: ArticleUpdaterComponent},
+  {path: 'search/:query', component: SearchPageComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];
