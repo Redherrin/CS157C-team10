@@ -10,6 +10,7 @@ import { HomeArticleListComponent } from './components/home-article-list/home-ar
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ArticleUpdaterComponent } from './components/home-article-list/article-updater/article-updater.component';
 import { CreateFormComponent } from './components/create-form/create-form.component';
+import { SearchPageComponent } from './components/search-page/search-page.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
     PageNotFoundComponent,
     ArticleUpdaterComponent,
     CreateFormComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,

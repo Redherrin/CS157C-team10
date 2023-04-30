@@ -1,0 +1,19 @@
+<div>
+    <h3>Search results for: <span class="emphasized">{{this.searchString}}</span></h3>
+    <div *ngIf="articles.length > 0; else noResults">
+        <div *ngFor="let article of articles">
+            <div class="article">
+                <a class='article-link' routerLink="/read/{{article.id}}">
+                    <p>
+                        {{ article.title }}, written by {{ article.author }}
+                    </p>
+                </a>
+                <br>
+            </div>
+        </div> 
+    </div>
+    <ng-template #noResults>
+        <p>No results found.</p>
+    </ng-template>
+
+</div>

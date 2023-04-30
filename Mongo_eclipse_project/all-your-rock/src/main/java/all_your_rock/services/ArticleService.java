@@ -29,6 +29,12 @@ public class ArticleService {
         Article article = mongoTemplate.findOne(query, Article.class);
         return article;
     }
+    
+    public List<Article> findArticlesByKeyword(String searchString){
+    	Query query = new Query(Criteria.where("title").regex(searchString, "i"));
+        List<Article> articleMatches = mongoTemplate.find(query, Article.class);
+        return articleMatches;
+    }
 
     public Article createArticle(Article article) {
         article.setId(new ObjectId().toHexString());
