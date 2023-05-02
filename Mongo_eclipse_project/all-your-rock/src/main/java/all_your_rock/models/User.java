@@ -1,25 +1,27 @@
 package all_your_rock.models;
 
-public class User {
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "users")
+public class User {
+	
+	@Id
 	private String id;
 	private String email;
 	private String username;
 	private String firstName;
 	private String lastName;
 	private String password;
-	
-	public User() {
-	}
-	
-	public User(String email, String username, String password) {
-		this.email = email;
-		this.username = username;
-		this.password = password;
-	}
+	private boolean isAuthor;
 	
 	public String getId() {
 		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	public String getEmail() {
@@ -59,7 +61,13 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-
+	public boolean isAuthor() {
+		return this.isAuthor;
+	}
+	
+	public void setIsAuthor(boolean isAuthor) {
+		this.isAuthor = isAuthor;
+	}
 	
 	
 	

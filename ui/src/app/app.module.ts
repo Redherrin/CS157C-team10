@@ -11,7 +11,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ArticleUpdaterComponent } from './components/home-article-list/article-updater/article-updater.component';
 import { CreateFormComponent } from './components/create-form/create-form.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
-
+import { RegisterFormComponent } from './components/user/register-form/register-form.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
     ArticleUpdaterComponent,
     CreateFormComponent,
     SearchPageComponent,
+    UserComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,

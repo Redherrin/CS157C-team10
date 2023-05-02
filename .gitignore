@@ -19,6 +19,8 @@ ui/.c9/
 ui/*.launch
 ui/.settings/
 ui/*.sublime-workspace
+Mongo_eclipse_project/all-your-rock/target/all-your-rock
+Mongo_eclipse_project/all-your-rock/target/META-INF
 
 # Visual Studio Code
 ui/.vscode/*
