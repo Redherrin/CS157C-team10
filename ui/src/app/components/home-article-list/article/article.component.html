@@ -1,13 +1,23 @@
-<div *ngIf="article; else notFound">
-    <h2>{{article.title}}</h2>
-    <h3>Written by {{article.author}}</h3>
-    <div>
-        Created: {{article.date | date:'MMMM d, y h:mm a'}}
-        <div *ngIf="article.lastUpdatedDate">Last Updated: {{article.lastUpdatedDate | date:'MMMM d, y h:mm a'}}</div>
+<div class="container my-4">
+    <div *ngIf="article; else notFound" class="row">
+      <div class="col">
+        <h3>{{ article.title }}</h3>
+        <h5>{{ article.subtitle }}</h5>
+        <h6 class="mb-3">Written by {{ article.author }}</h6>
+        <div class="mb-2">
+          <div>Created: {{ article.date | date:'MMMM d, y h:mm a' }}</div>
+          <div *ngIf="article.lastUpdatedDate">
+            <p>Last Updated: {{ article.lastUpdatedDate | date:'MMMM d, y h:mm a' }}</p>
+          </div>
+        </div>
+        <p>{{ article.body }}</p>
+      </div>
     </div>
-    <p>{{article.body}}</p>
-</div>
-
-<ng-template #notFound>
-    <h3>Article not found!</h3>
-</ng-template>
+    <ng-template #notFound>
+      <div class="row">
+        <div class="col">
+          <h3>Article not found!</h3>
+        </div>
+      </div>
+    </ng-template>
+  </div>

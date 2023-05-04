@@ -16,6 +16,7 @@ export class HomeArticleListComponent implements OnInit{
     id: '',
     userId: '',
     title: '',
+    subtitle: '',
     date: '',
     lastUpdatedDate: '',
     author: '',

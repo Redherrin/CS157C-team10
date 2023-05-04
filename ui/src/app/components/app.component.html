@@ -10,14 +10,20 @@
           <a class="nav-link btn btn-link text-white ms-2" type="button" routerLink="/home">All Your Rock</a>
         </li>
       </ul>
-      <ul class="navbar-nav ms-auto align-items-center d-flex flex-row">
-        <li class="nav-item me-2"><a class="nav-link btn btn-rounded text-white" routerLink="/create">+ Create Article</a></li>
-        <li class="nav-item ms-2"><a class="btn btn-custom btn-rounded text-white" routerLink="/user/register">Register</a></li>
+      <ul class="navbar-nav ms-auto align-items-center list-inline d-flex flex-row">
+        <li class="nav-item me-2"><a class="nav-link text-white" routerLink="/create">+ Create Article</a></li>
+          <!-- <li class="nav-item ms-2"><a class="btn btn-secondary btn-rounded text-white" routerLink="/user/register">Register</a></li> -->
+        <li *ngIf="this.tokenStorageService.loggedIn()" class="nav-item me-2">
+          <a class="btn btn-secondary btn-rounded text-white" (click)="this.tokenStorageService.logout()">Logout</a>
+        </li>
+        <ul class="navbar-nav ms-auto align-items-center list-inline d-flex flex-row">
+          <li class="nav-item me-2"><a class="btn btn-primary btn-rounded text-white" routerLink="/user/login">Login</a></li>
+          <li class="nav-item me-2"><a class="btn btn-secondary btn-rounded text-white" routerLink="/user/register">Register</a></li>
+        </ul>
       </ul>
     </div>
 </nav>
 <router-outlet></router-outlet>
-
 
 
 

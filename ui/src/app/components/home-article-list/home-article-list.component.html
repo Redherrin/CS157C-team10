@@ -1,35 +1,36 @@
-<html>
-    <div class="homepage">   
-        <div class="search-container">
-            <h3>Search by keywords/tags</h3>
-            <form (ngSubmit)="onSubmit(searchString.value)">
-                <input type="text" placeholder="Search for..." name="searchString" #searchString>
-                <button type="submit">Search</button>
-            </form>
-            
+<div class="container my-4">
+    <div class="row">
+      <div class="col-9">
+        <div class="row row-cols-3 g-4">
+          <div class="col" *ngFor="let article of articles">
+            <div class="card h-100">
+              <div class="card-body">
+                <a routerLink="/read/{{article.id}}" class="card-link">
+                  <h4 class="card-title">{{ article.title }}</h4>
+                </a>
+                <p class="card-text">{{ article.subtitle }}</p>
+                <div class="card-text">Written by: {{ article.author }}</div>
+                <div class="card-text">Created: {{ article.date | date:'MMMM d, y h:mm a'}}</div>
+                <div class="card-text" *ngIf="article.lastUpdatedDate">Last Updated: {{article.lastUpdatedDate | date:'MMMM d, y h:mm a'}}</div>
+              </div>
+              <div class="card-footer d-flex">
+                <button (click)="updateArticle(article.id)" class="btn btn-secondary me-2">Edit</button>
+                <button (click)="deleteArticle(article.id)" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="article-table">
-            <div class="" *ngFor="let article of articles">
-                <div class="article">
-                    <a class='article-link' routerLink="/read/{{article.id}}">
-                    <h1 class="article-title">
-                            {{ article.title }}
-                    </h1>
-                    <div class="article-text">
-                        Created: {{ article.date | date:'MMMM d, y h:mm a'}}
-                        <div *ngIf="article.lastUpdatedDate">Last Updated: {{article.lastUpdatedDate | date:'MMMM d, y h:mm a'}}</div>
-                    </div>
-                    <p class="article-text">
-                        Written by: {{ article.author }}
-                    </p>
-                    </a>
-                    <br>
-                </div>
-                <div class="article-buttons">
-                    <button (click)="updateArticle(article.id)">Edit</button>
-                    <button (click)="deleteArticle(article.id)">Delete</button>
-                </div>
-            </div> 
+      </div>
+      <div class="col-3">
+        <div class="mb-4">
+          <h3 class="mb-3">Search by keywords/tags</h3>
+          <form (ngSubmit)="onSubmit(searchString.value)">
+            <div class="input-group mb-3">
+              <input type="text" placeholder="Search for..." name="searchString" #searchString class="form-control">
+              <button type="submit" class="btn btn-secondary">Search</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-</html>
+  </div>

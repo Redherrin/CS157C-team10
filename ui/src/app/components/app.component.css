@@ -1,4 +1,11 @@
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #383838;
+  }
 
-.navbar-brand {
-    list-style: none;
+  .btn-custom {
+    background-color: #4B545C;
+  }
+  
+  .btn-custom:hover {
+    background-color: #383E44;
   }

@@ -16,6 +16,7 @@ export class CreateFormComponent {
     id: '',
     userId: '',
     title: '',
+    subtitle: '',
     date: '',
     lastUpdatedDate: '',
     author: '',

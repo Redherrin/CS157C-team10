@@ -51,6 +51,7 @@ public class ArticleService {
         }
         
         updatedArticle.setTitle(article.getTitle());
+        updatedArticle.setSubtitle(article.getSubtitle());
     	updatedArticle.setAuthor(article.getAuthor());
     	updatedArticle.setBody(article.getBody());
     	updatedArticle.setDate(article.getDate());

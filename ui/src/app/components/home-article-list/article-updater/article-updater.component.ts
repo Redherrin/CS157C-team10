@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/Router';
+import { ActivatedRoute, Router } from '@angular/Router';
 
 import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/models/article';
-import { Router } from '@angular/Router';
 
 @Component({
   selector: 'app-article-updater',
@@ -17,6 +16,7 @@ export class ArticleUpdaterComponent implements OnInit{
     id: '',
     userId: '',
     title: '',
+    subtitle: '',
     date: '',
     lastUpdatedDate: '',
     author: '',

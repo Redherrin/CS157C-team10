@@ -10,6 +10,7 @@ public class Article {
 	private String id;
 	
 	private String title;
+	private String subtitle;
 	private String author;
 	private String body;
 	private String date;
@@ -20,6 +21,9 @@ public class Article {
 
 	public String getTitle() {return title;}
 	public void setTitle(String title) {this.title = title;}	
+	
+	public String getSubtitle() {return subtitle;}
+	public void setSubtitle(String subtitle) {this.subtitle = subtitle;}	
 	
 	public String getAuthor() {return author;}
 	public void setAuthor(String author) {this.author = author;}
