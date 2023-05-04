@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { UserService } from '../services/user.service';
+import { TokenStorageService } from '../services/token-storage.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'All Your Rock';
+
+  constructor(
+    public tokenStorageService: TokenStorageService
+  ) {}
 }

@@ -9,6 +9,7 @@ import { ArticleUpdaterComponent } from './components/home-article-list/article-
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { RegisterFormComponent } from './components/user/register-form/register-form.component';
+import { LoginFormComponent } from './components/user/login-form/login-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'update/:id', component: ArticleUpdaterComponent},
   {path: 'search/:query', component: SearchPageComponent},
   {path: 'user/register', component: RegisterFormComponent},
+  {path: 'user/login', component: LoginFormComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];
