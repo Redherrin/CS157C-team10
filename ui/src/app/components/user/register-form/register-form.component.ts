@@ -32,7 +32,7 @@ export class RegisterFormComponent {
         this.user.isAuthor = false;
         this.router.navigate(['/home']);
       });
-    console.log("Saved User");
+    // console.log("Saved User");
   }
 
 
