@@ -1,3 +1,7 @@
+import { Chunk } from "./chunk";
+import { TextChunk } from "./text-chunk";
+import { MediaChunk } from "./media-chunk";
+
 export interface Article {
 	id: String;
 	userId: String;
@@ -7,4 +11,5 @@ export interface Article {
 	body: string;
 	date: string;
 	lastUpdatedDate: string;
+	chunks: Chunk<TextChunk|MediaChunk>[];
 }

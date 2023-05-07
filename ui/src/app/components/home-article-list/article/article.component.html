@@ -10,7 +10,29 @@
             <p>Last Updated: {{ article.lastUpdatedDate | date:'MMMM d, y h:mm a' }}</p>
           </div>
         </div>
-        <p>{{ article.body }}</p>
+        <!-- <p>{{ article.body }}</p> -->
+
+        <!-- ARTICLE BODY CHUNKS -->
+        <!-- <div *ngFor="let chunk of article.chunks">
+          <div *ngIf="chunk.type=='text'">
+            {{chunk.data.body}}
+          </div> -->
+        <!-- </div> -->
+        <div *ngFor="let chunk of article.chunks">
+          <div *ngIf="chunk.data.type=='text'">
+            <h2>{{chunk.data.header}}</h2>
+            <p>{{chunk.data.body}}</p>
+          </div>
+          <div *ngIf="chunk.data.type=='image'">
+            <img id="chunk.data.filename" src="http://localhost:8080/media/{{chunk.data.fileId}}">
+            <p>{{chunk.data.caption}}</p>
+            <p>Source: {{chunk.data.source}}</p>
+          </div>
+        </div>
+
+
+
+        
       </div>
     </div>
     <ng-template #notFound>

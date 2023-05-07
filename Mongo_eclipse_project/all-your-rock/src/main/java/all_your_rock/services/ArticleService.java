@@ -27,6 +27,7 @@ public class ArticleService {
     public Article findArticleById(String id) {
     	Query query = new Query(Criteria.where("_id").is(id));
         Article article = mongoTemplate.findOne(query, Article.class);
+        System.out.println(article);
         return article;
     }
     

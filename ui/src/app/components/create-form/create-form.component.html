@@ -1,4 +1,4 @@
-<div class="article-form">
+<!-- <div class="article-form">
     <h2>Create an Article</h2>
     <form (submit)="saveArticle()">
         <input type="text" id="title" name="title" placeholder="Title..." class="form-input" [(ngModel)]="article.title">
@@ -7,4 +7,52 @@
         <textarea id="body" name="body" placeholder="Body..." class="textarea" [(ngModel)]="article.body"></textarea>
         <div><button type="submit">Submit</button></div>
     </form>
+</div> -->
+
+
+<h2>Create an Article</h2>
+<div class="add-chunks-form" [formGroup]="form">
+
+    <input type="text" id="title" name="title" placeholder="Title..." class="form-input" formControlName="title">
+    <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle..." class="form-input" formControlName="subtitle">
+    <ng-container formArrayName="chunks">
+        <ng-container *ngFor="let chunk of getChunks().controls; let i = index">
+            <!-- {{chunk.value.type}} -->
+            <div [ngSwitch]="chunk.value.type">
+                <div *ngSwitchCase="'text'" class="text-form-row" [formGroupName]="i">
+                    <div formGroupName="data">
+                        <div class="form-group">
+                            <h3>Text Chunk</h3>
+                            <input type="text" id="header" name="header" placeholder="Header..." class="form-input" formControlName="header">
+                            <input type="text" id="body" name="body" placeholder="Body..." class="form-input" formControlName="body">
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'media'" class="media-form-row" [formGroupName]="i">
+                    <div formGroupName="data">
+                        <div class="form-group">
+                            <h3>Media Chunk</h3>
+                            <input type="file" id="file" name="file" placeholder="File..." 
+                                class="form-input" formControlName="file" (change)="onFileUpload($event, i)">
+                                <!-- (change)="onFileUpload($event)" -->
+                                <!-- class="form-input" onchange="console.log(event.target.files)" formControlName="file"> -->
+                                <input type="text" id="caption" name="caption" placeholder="Caption..." class="form-input" formControlName="caption">
+                                <input type="text" id="source" name="source" placeholder="Source..." class="form-input" formControlName="source">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <button (click)="onDeleteForm(i)">Delete Chunk</button>
+            <hr/>
+        </ng-container>
+
+    </ng-container>
+
+
+
+    <button (click)="onAddTextForm()">Add Text Chunk</button>
+    <button (click)="onAddMediaForm()">Add Media Chunk</button>
 </div>
+
+<button (click)="onSubmit(form)">Submit</button>

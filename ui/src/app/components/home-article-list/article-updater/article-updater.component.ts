@@ -20,7 +20,8 @@ export class ArticleUpdaterComponent implements OnInit{
     date: '',
     lastUpdatedDate: '',
     author: '',
-    body: ''
+    body: '',
+    chunks: []
   };;
 
   constructor(
