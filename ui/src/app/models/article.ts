@@ -11,5 +11,5 @@ export interface Article {
 	body: string;
 	date: string;
 	lastUpdatedDate: string;
-	chunks: Chunk<TextChunk|MediaChunk>[];
+	chunks: Chunk[];
 }
