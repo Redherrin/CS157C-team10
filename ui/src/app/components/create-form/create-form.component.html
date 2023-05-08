@@ -9,50 +9,57 @@
     </form>
 </div> -->
 
-
-<h2>Create an Article</h2>
-<div class="add-chunks-form" [formGroup]="form">
-
-    <input type="text" id="title" name="title" placeholder="Title..." class="form-input" formControlName="title">
-    <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle..." class="form-input" formControlName="subtitle">
-    <ng-container formArrayName="chunks">
+<div class="container my-4">
+    <h2>Create an Article</h2>
+  
+    <div class="add-chunks-form" [formGroup]="form">
+      <input type="text" id="title" name="title" placeholder="Title..." class="form-control my-3" formControlName="title">
+      <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle..." class="form-control my-3" formControlName="subtitle">
+  
+      <ng-container formArrayName="chunks">
         <ng-container *ngFor="let chunk of getChunks().controls; let i = index">
-            <!-- {{chunk.value.type}} -->
-            <div [ngSwitch]="chunk.value.type">
-                <div *ngSwitchCase="'text'" class="text-form-row" [formGroupName]="i">
-                    <div formGroupName="data">
-                        <div class="form-group">
-                            <h3>Text Chunk</h3>
-                            <input type="text" id="header" name="header" placeholder="Header..." class="form-input" formControlName="header">
-                            <input type="text" id="body" name="body" placeholder="Body..." class="form-input" formControlName="body">
-                        </div>
-                    </div>
+          <div [ngSwitch]="chunk.value.type">
+            <div *ngSwitchCase="'text'" class="card border border-dark" [formGroupName]="i">
+              <div formGroupName="data">
+                <div class="card-header" style="background-color: #c0c0c0;">
+                  <h3>Text Chunk</h3>
                 </div>
-                <div *ngSwitchCase="'media'" class="media-form-row" [formGroupName]="i">
-                    <div formGroupName="data">
-                        <div class="form-group">
-                            <h3>Media Chunk</h3>
-                            <input type="file" id="file" name="file" placeholder="File..." 
-                                class="form-input" formControlName="file" (change)="onFileUpload($event, i)">
-                                <!-- (change)="onFileUpload($event)" -->
-                                <!-- class="form-input" onchange="console.log(event.target.files)" formControlName="file"> -->
-                                <input type="text" id="caption" name="caption" placeholder="Caption..." class="form-input" formControlName="caption">
-                                <input type="text" id="source" name="source" placeholder="Source..." class="form-input" formControlName="source">
-                        </div>
-                    </div>
+                <div class="card-body">
+                  <input type="text" id="header" name="header" placeholder="Header..." class="form-control my-3" formControlName="header">
+                  <input type="text" id="body" name="body" placeholder="Body..." class="form-control my-3" formControlName="body">
                 </div>
+                <div class="card-footer d-flex" style="background-color: #c0c0c0;">
+                    <button type="button" class="btn btn-danger" (click)="onDeleteForm(i)">Delete Chunk</button>
+                </div>
+              </div>
             </div>
-        
-            <button (click)="onDeleteForm(i)">Delete Chunk</button>
-            <hr/>
+            <div *ngSwitchCase="'media'" class="card border border-dark" [formGroupName]="i">
+              <div formGroupName="data">
+                <div class="form-group">
+                  <div class="card-header" style="background-color: #c0c0c0;">
+                    <h3>Media Chunk</h3>
+                  </div>
+                  <div class="card-body">
+                    <input type="file" id="file" name="file" class="form-control my-3" formControlName="file" (change)="onFileUpload($event, i)">
+                    <input type="text" id="caption" name="caption" placeholder="Caption..." class="form-control my-3" formControlName="caption">
+                    <input type="text" id="source" name="source" placeholder="Source..." class="form-control my-3" formControlName="source">
+                  </div>
+                  <div class="card-footer d-flex" style="background-color: #c0c0c0;">
+                    <button type="button" class="btn btn-danger" (click)="onDeleteForm(i)">Delete Chunk</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <hr>
         </ng-container>
-
-    </ng-container>
-
-
-
-    <button (click)="onAddTextForm()">Add Text Chunk</button>
-    <button (click)="onAddMediaForm()">Add Media Chunk</button>
-</div>
-
-<button (click)="onSubmit(form)">Submit</button>
+      </ng-container>
+  
+      <button type="button" class="btn btn-secondary  " (click)="onAddTextForm()">Add Text Chunk</button>
+      <button type="button" class="btn btn-secondary  ms-2" (click)="onAddMediaForm()">Add Media Chunk</button>
+      <div>
+        <button type="button" class="btn btn-primary mt-3" (click)="onSubmit(form)">Submit</button>
+      </div>
+    </div>
+  </div>
