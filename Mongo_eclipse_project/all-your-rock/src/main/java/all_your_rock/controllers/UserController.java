@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+import all_your_rock.models.Article;
 import all_your_rock.models.User;
 import all_your_rock.services.UserService;
 import io.jsonwebtoken.Jwts;
@@ -57,7 +59,14 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findUserById(@PathVariable("id") String id) {
+		System.out.println(id);
 		User user = userService.findUserById(id);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	@GetMapping("/username/{username}")
+	public ResponseEntity<User> findUserByUsername(@PathVariable("username") String username) {
+		User user = userService.findUserByUsername(username);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
@@ -65,6 +74,17 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User newUser = userService.createUser(user);
 		return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+	}
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable("id") String id, @RequestBody User user){
+		try{
+			User updatedUser = userService.updateUser(id, user);
+			return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PostMapping("/login")
@@ -77,9 +97,9 @@ public class UserController {
 					.setHeaderParam("typ", "JWS")
 					.claim("id", user.getId())
 					.claim("username", user.getUsername())
+					.claim("email", user.getEmail())
 					.signWith(this.secret)
 					.compact();
-//			System.out.println(":jwt: " + jwt);
 			response.put("status", "success");
 			response.put("jwt", jwt);
 			return response;

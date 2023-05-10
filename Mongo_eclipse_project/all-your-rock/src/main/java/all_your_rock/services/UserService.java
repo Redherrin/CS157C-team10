@@ -28,7 +28,13 @@ public class UserService {
     private MongoTemplate mongoTemplate;
 	
 	public User findUserById(String id) {
-		Query query = new Query();
+		Query query = new Query(Criteria.where("_id").is(id));
+		User user = mongoTemplate.findOne(query, User.class);
+		return user;
+	}
+	
+	public User findUserByUsername(String username) {
+		Query query = new Query(Criteria.where("username").is(username));
 		User user = mongoTemplate.findOne(query, User.class);
 		return user;
 	}
@@ -44,6 +50,23 @@ public class UserService {
 		query.addCriteria(Criteria.where("username").is(user.getUsername()));
 		query.addCriteria(Criteria.where("password").is(user.getPassword()));
 		return mongoTemplate.exists(query, User.class);
+	}
+
+	public User updateUser(String id, User user) throws Exception {
+		Query query = new Query(Criteria.where("_id").is(id));
+        User updatedUser = mongoTemplate.findOne(query, User.class);
+        
+        if(updatedUser == null) {
+        	throw new Exception("Article does not exist with id " + id);
+        }
+        
+        updatedUser.setUsername(user.getUsername());
+        updatedUser.setPassword(user.getPassword());
+    	updatedUser.setEmail(user.getEmail());
+    	updatedUser.setFirstName(user.getFirstName());
+    	updatedUser.setLastName(user.getLastName());
+
+        return mongoTemplate.save(updatedUser);
 	}
 	
 }

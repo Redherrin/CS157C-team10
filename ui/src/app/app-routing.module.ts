@@ -11,6 +11,7 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { RegisterFormComponent } from './components/user/register-form/register-form.component';
 import { LoginFormComponent } from './components/user/login-form/login-form.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { UserEditPageComponent } from './components/user-edit-page/user-edit-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'user/register', component: RegisterFormComponent},
   {path: 'user/login', component: LoginFormComponent},
   {path: 'userpage', component: UserPageComponent},
+  {path: 'edit-profile/:id', component: UserEditPageComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];

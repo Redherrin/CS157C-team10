@@ -17,6 +17,8 @@ export class LoginFormComponent {
     username: '',
     password: '',
     email: '',
+    firstName: '',
+    lastName: '',
     isAuthor:false
   };
 
@@ -29,7 +31,7 @@ export class LoginFormComponent {
   login() {
     this.userService.login(this.user)
       .subscribe(key => {
-        // console.log(key.status);
+        console.log(this.user);
         if (key.status == "failure") {
           this.router.navigate(['/user/login']);
         } else {

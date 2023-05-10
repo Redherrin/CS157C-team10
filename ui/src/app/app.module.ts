@@ -15,6 +15,7 @@ import { RegisterFormComponent } from './components/user/register-form/register-
 import { UserComponent } from './components/user/user.component';
 import { LoginFormComponent } from './components/user/login-form/login-form.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { UserEditPageComponent } from './components/user-edit-page/user-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UserPageComponent } from './components/user-page/user-page.component';
     RegisterFormComponent,
     LoginFormComponent,
     UserPageComponent,
+    UserEditPageComponent,
   ],
   imports: [
     BrowserModule,

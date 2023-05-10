@@ -17,6 +17,8 @@ export class RegisterFormComponent {
     username: '',
     password: '',
     email: '',
+    firstName: '',
+    lastName: '',
     isAuthor: false
   }
 
@@ -29,6 +31,7 @@ export class RegisterFormComponent {
     this.userService.createUser(this.user)
       .subscribe(newUser => {
         this.user = newUser;
+        console.log(this.user);
         this.user.isAuthor = false;
         this.router.navigate(['/home']);
       });

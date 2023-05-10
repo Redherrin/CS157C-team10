@@ -33,7 +33,6 @@ export class ArticleService {
 
   updateArticle(id: String, article: Article): Observable<Article>{
     article.lastUpdatedDate = new Date().toISOString();
-    console.log(article.lastUpdatedDate);
     return this.http.put<Article>(`${this.articleUrl}/update/${id}`, article);
   }
 

@@ -19,12 +19,16 @@ export class UserService {
     return this.http.get<User>(`${this.userUrl}/${id}`);
   }
 
+  getUserByUsername(username: String): Observable<User>{
+    return this.http.get<User>(`${this.userUrl}/username/${username}`);
+  }
+
   createUser(user: User): Observable<User>{
     return this.http.post<User>(`${this.userUrl}/register`, user);
   }
 
-  updateUser(user: User): Observable<User>{
-    return this.http.put<User>(`${this.userUrl}/update`, user);
+  updateUser(id: String, user: User): Observable<User>{
+    return this.http.put<User>(`${this.userUrl}/update/${id}`, user);
   }
 
   login(user: User): Observable<any>{
