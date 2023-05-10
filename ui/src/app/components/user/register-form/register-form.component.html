@@ -1,10 +1,30 @@
-<div class="register-form">
-    <h2>Register</h2>
-    <form (submit)="saveUser()">
-        <input type="text" id="username" name="username" placeholder="username..." class="form-input" [(ngModel)]="user.username">
-        <input type="text" id="password" name="password" placeholder="password..." class="form-input" [(ngModel)]="user.password">
-        <input type="text" id="email" name="email" placeholder="email..." class="form-input" [(ngModel)]="user.email">
-        
-        <div><button type="submit">Submit</button></div>
-    </form>
-</div>
+<div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-header text-center" style="background-color: #c0c0c0;">
+            <h2>Register</h2>
+          </div>
+          <div class="card-body">
+            <form (submit)="saveUser()">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="email..." [(ngModel)]="user.email">
+              </div>
+              <div class="form-group my-3">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="username..." [(ngModel)]="user.username">
+              </div>
+              <div class="form-group my-3">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="password..." [(ngModel)]="user.password">
+              </div>
+              <div class="d-flex justify-content-center mb-2">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

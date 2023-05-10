@@ -76,7 +76,7 @@ public class UserController {
 					.setHeaderParam("alg", "HS256")
 					.setHeaderParam("typ", "JWS")
 					.claim("id", user.getId())
-					.claim("nam", user.getUsername())
+					.claim("username", user.getUsername())
 					.signWith(this.secret)
 					.compact();
 //			System.out.println(":jwt: " + jwt);

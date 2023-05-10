@@ -1,19 +1,26 @@
-<div>
+<div class="container my-4">
     <h3>Search results for: <span class="emphasized">{{this.searchString}}</span></h3>
     <div *ngIf="articles.length > 0; else noResults">
-        <div *ngFor="let article of articles">
-            <div class="article">
-                <a class='article-link' routerLink="/read/{{article.id}}">
-                    <p>
-                        {{ article.title }}, written by {{ article.author }}
-                    </p>
-                </a>
-                <br>
+        <div>
+            <div>
+                <div *ngFor="let article of articles">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a class="card-link" routerLink="/read/{{article.id}}">
+                                    {{ article.title }}
+                                </a>
+                            </h5>
+                            <p class="card-text">
+                                Written by {{ article.author }}
+                            </p>
+                        </div>
+                    </div>
+                </div> 
             </div>
-        </div> 
+        </div>
     </div>
     <ng-template #noResults>
         <p>No results found.</p>
     </ng-template>
-
 </div>
