@@ -14,7 +14,7 @@
         <li class="nav-item me-2"><a class="btn btn-primary btn-rounded nav-link text-white px-2" routerLink="/create">+ Create Article</a></li>
           <!-- <li class="nav-item ms-2"><a class="btn btn-secondary btn-rounded text-white" routerLink="/user/register">Register</a></li> -->
         <li *ngIf="this.tokenStorageService.loggedIn()" class="nav-item ms-2 me-2 text-white">
-          Hello, User
+          Hello, {{username}}
           <a routerLink="/userpage">
             <img src="https://pixlok.com/wp-content/uploads/2021/03/default-user-profile-picture.jpg" alt="user-avatar" class="rounded-circle me-2 ms-2" width="40">
           </a>
