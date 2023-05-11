@@ -49,7 +49,7 @@ export class ArticleUpdaterComponent implements OnInit{
       // let test = this.createForm?.getTextForm();
       // chunks?.push(test);
       // console.log(chunks);
-
+      this.article.comments = article.comments;
       let formChunks = this.createForm?.getChunks();
       for (var chunk of article.chunks) {
         if (chunk.type == 'text') {
@@ -84,7 +84,7 @@ export class ArticleUpdaterComponent implements OnInit{
       date: this.createForm?.form.controls.date.value?.toString()!,
       lastUpdatedDate: Date.now().toString(),
       chunks: this.createForm?.form.controls.chunks.value! as Chunk[],
-      comments: []
+      comments: this.article.comments
     };
     // article = data.value;
     console.log("SUBMIT ARTICLE");
