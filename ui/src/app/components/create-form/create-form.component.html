@@ -23,6 +23,12 @@
         </div>
         <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle..." class="form-control my-3" formControlName="subtitle">
       </div>
+      <div class="input-group">
+        <div class="input-group-prepend col-1">
+          <span class="input-group-text my-3">Author</span>
+        </div>
+        <input type="text" id="author" name="author" placeholder="Author..." class="form-control my-3" formControlName="author">
+      </div>
 
       <ng-container formArrayName="chunks">
         <ng-container *ngFor="let chunk of getChunks().controls; let i = index">

@@ -75,7 +75,7 @@ export class CreateFormComponent {
       userId: '',
       title: this.form.controls.title.value!,
       subtitle: this.form.controls.subtitle.value!,
-      author: '',
+      author: this.form.controls.author.value!,
       date: Date.now.toString(),
       lastUpdatedDate: '',
       chunks: this.form.controls.chunks.value! as Chunk[],

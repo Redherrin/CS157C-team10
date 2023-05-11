@@ -33,7 +33,7 @@ export class ArticleCreatorComponent {
       userId: '',
       title: this.createForm?.form.controls.title.value!,
       subtitle: this.createForm?.form.controls.subtitle.value!,
-      author: '',
+      author: this.createForm?.form.controls.author.value!,
       // body: '',
       date: Date.now.toString(),
       lastUpdatedDate: '',
