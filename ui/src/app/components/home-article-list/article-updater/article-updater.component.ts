@@ -89,7 +89,7 @@ export class ArticleUpdaterComponent implements OnInit{
     // article = data.value;
     console.log("SUBMIT ARTICLE");
     console.log(article);
-    this.articleService.updateArticle(article.id, article).subscribe();
-    this.router.navigate([`/read/${article.id}`]);
+    this.articleService.updateArticle(article.id, article).subscribe(()=>{this.router.navigate([`/read/${article.id}`]);});
+    
   }
 }
