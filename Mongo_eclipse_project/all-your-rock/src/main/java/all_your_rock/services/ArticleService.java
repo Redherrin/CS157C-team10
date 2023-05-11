@@ -52,14 +52,14 @@ public class ArticleService {
         	throw new Exception("Article does not exist with id " + id);
         }
         
-        updatedArticle.setTitle(article.getTitle());
-        updatedArticle.setSubtitle(article.getSubtitle());
-    	updatedArticle.setAuthor(article.getAuthor());
-    	updatedArticle.setBody(article.getBody());
-    	updatedArticle.setDate(article.getDate());
-    	updatedArticle.setLastUpdatedDate(article.getLastUpdatedDate());
+//        updatedArticle.setTitle(article.getTitle());
+//        updatedArticle.setSubtitle(article.getSubtitle());
+//    	updatedArticle.setAuthor(article.getAuthor());
+//    	updatedArticle.setBody(article.getBody());
+//    	updatedArticle.setDate(article.getDate());
+//    	updatedArticle.setLastUpdatedDate(article.getLastUpdatedDate());
     	
-        return mongoTemplate.save(updatedArticle);
+        return mongoTemplate.save(article);
     }
     
     public Article addComment(String id, Comment comment) throws Exception {

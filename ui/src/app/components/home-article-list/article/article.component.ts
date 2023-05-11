@@ -26,7 +26,7 @@ export class ArticleComponent implements OnInit{
     title: '',
     subtitle: '',
     author: '',
-    body: '',
+    // body: '',
     date: '',
     lastUpdatedDate: '',
     chunks: [],
@@ -59,16 +59,16 @@ export class ArticleComponent implements OnInit{
       .subscribe(
         article =>{
           this.article = article;
-          console.log("Article: " + JSON.stringify(article.chunks));
+          // console.log("Article: " + JSON.stringify(article.chunks));
           for (let chunk of article.chunks) {
-            console.log("chunk " + JSON.stringify(chunk));
-            console.log(chunk.type)
-            console.log("chunk data " + JSON.stringify(chunk.data));
+            // console.log("chunk " + JSON.stringify(chunk));
+            // console.log(chunk.type)
+            // console.log("chunk data " + JSON.stringify(chunk.data));
             if (chunk.data.type == 'text') {
-              console.log('text: ' + chunk.data);
+              // console.log('text: ' + chunk.data);
               // this.textChunks.push(chunk.data);
             } else if (chunk.data.type == 'media') {
-              console.log('media: ' + chunk.data);
+              // console.log('media: ' + chunk.data);
               // this.mediaChunks.push(chunk.data);
             }
             

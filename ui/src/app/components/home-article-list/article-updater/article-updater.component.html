@@ -1,24 +1,7 @@
 <div class="container my-4">
-    <h3 class="mb-4">Update Article</h3>
-    <form (submit)="updateArticle()" class="row g-3">
-      <div class="col-12">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" id="title" name="title" [(ngModel)]="article.title" class="form-control">
-      </div>
-      <div class="col-12">
-        <label for="subtitle" class="form-label">Subtitle</label>
-        <input type="text" id="subtitle" name="subtitle" [(ngModel)]="article.subtitle" class="form-control">
-      </div>
-      <div class="col-12">
-        <label for="author" class="form-label">Author</label>
-        <input type="text" id="author" name="author" [(ngModel)]="article.author" class="form-control">
-      </div>
-      <div class="col-12">
-        <label for="body" class="form-label">Body</label>
-        <textarea id="body" name="body" [(ngModel)]="article.body" class="form-control" style="resize: none; height: 450px"></textarea>
-      </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
+  <h2>Update an Article</h2>
+  <app-create-form #createForm></app-create-form>
+  <div>
+      <button type="button" class="btn btn-primary mt-3" (click)="onSubmit(createForm.form)">Update</button>
   </div>
+</div>

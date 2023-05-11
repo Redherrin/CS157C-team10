@@ -76,7 +76,6 @@ export class CreateFormComponent {
       title: this.form.controls.title.value!,
       subtitle: this.form.controls.subtitle.value!,
       author: '',
-      body: '',
       date: Date.now.toString(),
       lastUpdatedDate: '',
       chunks: this.form.controls.chunks.value! as Chunk[],
@@ -85,8 +84,71 @@ export class CreateFormComponent {
     this.articleService.createArticle(article).subscribe();
   }
 
+  // onSubmit(data: FormGroup): void {
+  //   // this.articleService.createArticle(this.article)
+  //   //   .subscribe(savedArticle => {
+  //   //     this.article = savedArticle;
+  //   //     this.router.navigate(['/home']);
+  //   //   });
+  //   console.log(data);
+
+  //   let article: Article = {
+  //     id: '',
+  //     userId: '',
+  //     title: this.form.controls.title.value!,
+  //     subtitle: this.form.controls.subtitle.value!,
+  //     author: '',
+  //     body: '',
+  //     date: Date.now.toString(),
+  //     lastUpdatedDate: '',
+  //     chunks: this.form.controls.chunks.value! as Chunk[]
+  //   };
+  //   this.articleService.createArticle(article).subscribe();
+  // }
+
   getChunks() {
     return this.form.controls["chunks"] as FormArray;
+  }
+
+  // getTextForm(header: string, body: string) :FormGroup {
+  //   const textForm = this.fb.group({
+  //     type: ['text'],
+  //     data: this.fb.group({
+  //       header: [header],
+  //       body: [body, Validators.required],
+  //       type: ['text']
+  //     })
+  //   });
+  //   return textForm;
+  // }
+
+  getTextForm() :FormGroup {
+    const textForm = this.fb.group({
+      type: ['text'],
+      data: this.fb.group({
+        header: [''],
+        body: ['', Validators.required],
+        type: ['text']
+      })
+    });
+    return textForm;
+  }
+
+  getMediaForm() :FormGroup {
+    const mediaForm = this.fb.group({
+      type: ['media'],
+      data: this.fb.group({
+        filename: ['', Validators.required],
+        caption: ['', Validators.required],
+        source: ['', Validators.required],
+        uploadDate: [''],
+        fileId: [''],
+        file: ['', Validators.required],
+        type: [''],
+        contentType: ['']
+      })
+    });
+    return mediaForm;
   }
 
   onAddTextForm() {

@@ -12,12 +12,13 @@ import { RegisterFormComponent } from './components/user/register-form/register-
 import { LoginFormComponent } from './components/user/login-form/login-form.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserEditPageComponent } from './components/user-edit-page/user-edit-page.component';
+import { ArticleCreatorComponent } from './components/home-article-list/article-creator/article-creator.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeArticleListComponent},
   {path: 'read/:id', component: ArticleComponent},
-  {path: 'create', component: CreateFormComponent},
+  {path: 'create', component: ArticleCreatorComponent},
   {path: 'update/:id', component: ArticleUpdaterComponent},
   {path: 'search/:query', component: SearchPageComponent},
   {path: 'user/register', component: RegisterFormComponent},
