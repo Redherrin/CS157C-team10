@@ -1,40 +1,33 @@
 <div class="container my-4">
+
     <div *ngIf="article; else notFound">
       <div>
-        <h3 class="display-3">{{ article.title }}</h3>
-        <h3 class="lead">{{ article.subtitle }}</h3>
-        <h6 class="mb-3">Written by {{ article.author }}</h6>
-        <div class="mb-2">
-          <div>Created: {{ article.date | date:'MMMM d, y h:mm a' }}</div>
-          <div *ngIf="article.lastUpdatedDate">
-            <p>Last Updated: {{ article.lastUpdatedDate | date:'MMMM d, y h:mm a' }}</p>
-          </div>
-        </div>
-        <!-- <p>{{ article.body }}</p> -->
-
-        <!-- ARTICLE BODY CHUNKS -->
-        <!-- <div *ngFor="let chunk of article.chunks">
-          <div *ngIf="chunk.type=='text'">
-            {{chunk.data.body}}
-          </div> -->
-        <!-- </div> -->
+        <h1 class="display-3">{{ article.title }}</h1>
+        <h2 class="lead">{{ article.subtitle }}</h2>
+        <hr style="border-top: 2px solid black;">
+          Written by {{ article.author }} |
+          Created: {{ article.date | date:'MMMM d, y h:mm a' }}
+          <span *ngIf="article.lastUpdatedDate">
+            , Last Updated: {{ article.lastUpdatedDate | date:'MMMM d, y h:mm a' }}
+          </span>
+        <hr style="border-top: 2px solid black;">
         <div *ngFor="let chunk of article.chunks">
           <div *ngIf="chunk.data.type=='text'">
-            <h2>{{chunk.data.header}}</h2>
+            <h5>{{chunk.data.header}}</h5>
             <p>{{chunk.data.body}}</p>
           </div>
-          <div *ngIf="chunk.data.type=='image'">
-            <img id="chunk.data.filename" src="http://localhost:8080/media/{{chunk.data.fileId}}">
-            <p>{{chunk.data.caption}}</p>
-            <p>Source: {{chunk.data.source}}</p>
+          <div class="d-flex justify-content-center align-items-center" *ngIf="chunk.data.type=='image'">
+            <div class="text-center">
+              <img id="chunk.data.filename" class="mx-auto my-auto" src="http://localhost:8080/media/{{chunk.data.fileId}}">
+              <div>{{chunk.data.caption}}</div>
+              <div><small>Source: {{chunk.data.source}}</small></div>
+            </div>
           </div>
+          <hr>
         </div>
-
-
-
-        
       </div>
     </div>
+
     <ng-template #notFound>
       <div class="row">
         <div class="col">
@@ -42,4 +35,5 @@
         </div>
       </div>
     </ng-template>
+    
   </div>
