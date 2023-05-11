@@ -40,7 +40,6 @@ export class ArticleCreatorComponent {
       chunks: this.createForm?.form.controls.chunks.value! as Chunk[],
       comments: []
     };
-    this.articleService.createArticle(article).subscribe();
-    this.router.navigate(['/home']);
+    this.articleService.createArticle(article).subscribe(()=>{this.router.navigate(['/home'])});
   }
 }
