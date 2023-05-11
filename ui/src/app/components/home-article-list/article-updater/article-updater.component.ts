@@ -79,7 +79,7 @@ export class ArticleUpdaterComponent implements OnInit{
       userId: '',
       title: this.createForm?.form.controls.title.value!,
       subtitle: this.createForm?.form.controls.subtitle.value!,
-      author: '',
+      author: this.createForm?.form.controls.author.value!,
       // body: '',
       date: this.createForm?.form.controls.date.value?.toString()!,
       lastUpdatedDate: Date.now().toString(),
@@ -90,6 +90,6 @@ export class ArticleUpdaterComponent implements OnInit{
     console.log("SUBMIT ARTICLE");
     console.log(article);
     this.articleService.updateArticle(article.id, article).subscribe();
-    // this.router.navigate(['/home']);
+    this.router.navigate([`/read/${article.id}`]);
   }
 }
