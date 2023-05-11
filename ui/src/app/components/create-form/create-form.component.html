@@ -11,9 +11,19 @@
 
 
     <div class="add-chunks-form" [formGroup]="form">
-      <input type="text" id="title" name="title" placeholder="Title..." class="form-control my-3" formControlName="title">
-      <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle..." class="form-control my-3" formControlName="subtitle">
-  
+      <div class="input-group">
+        <div class="input-group-prepend col-1">
+          <span class="input-group-text my-3">Title</span>
+        </div>
+        <input type="text" id="title" name="title" placeholder="Title..." class="form-control my-3" formControlName="title">
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend col-1">
+          <span class="input-group-text my-3">Subtitle</span>
+        </div>
+        <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle..." class="form-control my-3" formControlName="subtitle">
+      </div>
+
       <ng-container formArrayName="chunks">
         <ng-container *ngFor="let chunk of getChunks().controls; let i = index">
           <div [ngSwitch]="chunk.value.type">
@@ -23,8 +33,19 @@
                   <h3>Text Chunk</h3>
                 </div>
                 <div class="card-body">
-                  <input type="text" id="header" name="header" placeholder="Header..." class="form-control my-3" formControlName="header">
-                  <input type="text" id="body" name="body" placeholder="Body..." class="form-control my-3" formControlName="body">
+    
+                  <div class="input-group">
+                    <div class="input-group-prepend col-1">
+                      <span class="input-group-text my-3">Header</span>
+                    </div>
+                    <input type="text" id="header" name="header" placeholder="Header..." class="form-control my-3" formControlName="header">
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend col-1">
+                      <span class="input-group-text my-3">Body</span>
+                    </div>
+                    <input type="text" id="body" name="body" placeholder="Body..." class="form-control my-3" formControlName="body">
+                  </div>
                 </div>
                 <div class="card-footer d-flex" style="background-color: #c0c0c0;">
                     <button type="button" class="btn btn-danger" (click)="onDeleteForm(i)">Delete Chunk</button>
@@ -38,10 +59,21 @@
                     <h3>Media Chunk</h3>
                   </div>
                   <div class="card-body">
+                    <!-- formControlName="file" --------------------------------------v -->
                     <input type="file" id="file" name="file" class="form-control my-3"  (change)="onFileUpload($event, i)">
-                    <input type="text" id="caption" name="caption" placeholder="Caption..." class="form-control my-3" formControlName="caption">
-                    <input type="text" id="source" name="source" placeholder="Source..." class="form-control my-3" formControlName="source">
-                  </div>
+                    <div class="input-group">
+                      <div class="input-group-prepend col-1">
+                        <span class="input-group-text my-3">Caption</span>
+                      </div>
+                        <input type="text" id="caption" name="caption" placeholder="Caption..." class="form-control my-3" formControlName="caption">
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-prepend col-1">
+                        <span class="input-group-text my-3">Source</span>
+                      </div>
+                      <input type="text" id="source" name="source" placeholder="Source..." class="form-control my-3" formControlName="source">
+                    </div>
+                    </div>
                   <div class="card-footer d-flex" style="background-color: #c0c0c0;">
                     <button type="button" class="btn btn-danger" (click)="onDeleteForm(i)">Delete Chunk</button>
                   </div>
