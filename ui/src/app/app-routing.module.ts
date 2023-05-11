@@ -13,9 +13,10 @@ import { LoginFormComponent } from './components/user/login-form/login-form.comp
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserEditPageComponent } from './components/user-edit-page/user-edit-page.component';
 import { ArticleCreatorComponent } from './components/home-article-list/article-creator/article-creator.component';
+import { CoverPageComponent } from './components/cover-page/cover-page.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', component: CoverPageComponent},
   {path: 'home', component: HomeArticleListComponent},
   {path: 'read/:id', component: ArticleComponent},
   {path: 'create', component: ArticleCreatorComponent},

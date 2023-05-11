@@ -17,6 +17,7 @@ import { LoginFormComponent } from './components/user/login-form/login-form.comp
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserEditPageComponent } from './components/user-edit-page/user-edit-page.component';
 import { ArticleCreatorComponent } from './components/home-article-list/article-creator/article-creator.component';
+import { CoverPageComponent } from './components/cover-page/cover-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ArticleCreatorComponent } from './components/home-article-list/article-
     LoginFormComponent,
     UserPageComponent,
     UserEditPageComponent,
-    ArticleCreatorComponent
+    ArticleCreatorComponent,
+    CoverPageComponent
   ],
   imports: [
     BrowserModule,
