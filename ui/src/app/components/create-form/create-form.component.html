@@ -61,6 +61,11 @@
                   <div class="card-body">
                     <!-- formControlName="file" --------------------------------------v -->
                     <input type="file" id="file" name="file" class="form-control my-3"  (change)="onFileUpload($event, i)">
+                    
+                    <div *ngIf="isFileIdValid(i)">
+                      <img id="chunk.data.filename" class="mx-auto my-auto" src="http://localhost:8080/media/{{ getFileId(i) }}">
+                    </div>
+                    
                     <div class="input-group">
                       <div class="input-group-prepend col-1">
                         <span class="input-group-text my-3">Caption</span>

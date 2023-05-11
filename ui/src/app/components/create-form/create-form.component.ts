@@ -142,7 +142,7 @@ export class CreateFormComponent {
         caption: ['', Validators.required],
         source: ['', Validators.required],
         uploadDate: [''],
-        fileId: [''],
+        fileId: ['', Validators.required],
         file: ['', Validators.required],
         type: [''],
         contentType: ['']
@@ -173,7 +173,7 @@ export class CreateFormComponent {
         caption: ['', Validators.required],
         source: ['', Validators.required],
         uploadDate: [''],
-        fileId: [''],
+        fileId: ['', Validators.required],
         file: ['', Validators.required],
         type: [''],
         contentType: ['']
@@ -187,6 +187,14 @@ export class CreateFormComponent {
 
   onDeleteForm(index: number) {
     this.getChunks().removeAt(index);
+  }
+
+  isFileIdValid(index: number) {
+    return this.form.controls.chunks.at(index).get("data")?.get("fileId")?.valid;
+  }
+  
+  getFileId(index: number): string{
+    return this.form.controls.chunks.at(index).get("data")?.get("fileId")?.value;
   }
 
   onFileUpload(event: any, index: number) {
@@ -205,8 +213,7 @@ export class CreateFormComponent {
           type: header.type,
           contentType: header.contentType,
           uploadDate: Date.now().toString()
-        });
-
+          });
           
       }
     );
