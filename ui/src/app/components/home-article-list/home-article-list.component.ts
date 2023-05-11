@@ -20,7 +20,7 @@ export class HomeArticleListComponent implements OnInit{
     date: '',
     lastUpdatedDate: '',
     author: '',
-    body: '',
+    // body: '',
     chunks: []
   };
 

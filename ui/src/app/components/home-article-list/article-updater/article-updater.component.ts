@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/Router';
+import { FormArray, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/models/article';
+import { Chunk } from 'src/app/models/chunk';
+import { CreateFormComponent } from '../../create-form/create-form.component';
 
 @Component({
   selector: 'app-article-updater',
@@ -12,37 +15,80 @@ import { Article } from 'src/app/models/article';
 
 export class ArticleUpdaterComponent implements OnInit{
 
-  article: Article = {
-    id: '',
-    userId: '',
-    title: '',
-    subtitle: '',
-    date: '',
-    lastUpdatedDate: '',
-    author: '',
-    body: '',
-    chunks: []
-  };;
+  // article: Article = {
+  //   id: '',
+  //   userId: '',
+  //   title: '',
+  //   subtitle: '',
+  //   date: '',
+  //   lastUpdatedDate: '',
+  //   author: '',
+  //   // body: '',
+  //   chunks: []
+  // };
 
-  constructor(
+  @ViewChild('createForm') createForm?: CreateFormComponent;
+
+  id?: string;
+
+  constructor (
     private route: ActivatedRoute,
     private articleService: ArticleService,
-    private router: Router
+    private router: Router,
+    public createFormComponent: CreateFormComponent
   ) {}
 
   ngOnInit(): void {
-    const id = String(this.route.snapshot.paramMap.get('id'));
-    this.articleService.getArticle(id).subscribe(article => {
-      this.article = article;
-      //this.articleForm.patchValue(article);
+    this.id = String(this.route.snapshot.paramMap.get('id'));
+    this.articleService.getArticle(this.id).subscribe(article => {
+      console.log("article: " + article);
+      // let chunks = [];
+      // this.createForm!.form.get('chunks')?.setValue(chunks);
+
+      // console.log(chunks);
+      // let test = this.createForm?.getTextForm();
+      // chunks?.push(test);
+      // console.log(chunks);
+
+      let formChunks = this.createForm?.getChunks();
+      for (var chunk of article.chunks) {
+        if (chunk.type == 'text') {
+          formChunks?.push(this.createForm?.getTextForm());
+        } else if (chunk.type == 'media') {
+          formChunks?.push(this.createForm?.getMediaForm());
+          formChunks?.at(formChunks.length-1).patchValue(
+            {
+              file: chunk.data.filename
+            }
+          );
+        }
+      }
+      Object.keys(article).forEach(key => {
+        // if (key !== 'chunks') {
+          this.createForm!.form.get(key as keyof Article)?.setValue(article[key as keyof Article]);
+          console.log(key as keyof Article);
+        // }
+      })
+      
     });
   }
 
-  updateArticle(): void {
-    this.articleService.updateArticle(this.article.id, this.article)
-      .subscribe(updatedArticle => {
-        this.article = updatedArticle;
-        this.router.navigate(['/home']);
-      });
+  onSubmit(data: FormGroup): void {
+    let article: Article = {
+      id: this.id!,
+      userId: '',
+      title: this.createForm?.form.controls.title.value!,
+      subtitle: this.createForm?.form.controls.subtitle.value!,
+      author: '',
+      // body: '',
+      date: this.createForm?.form.controls.date.value?.toString()!,
+      lastUpdatedDate: Date.now().toString(),
+      chunks: this.createForm?.form.controls.chunks.value! as Chunk[]
+    };
+    // article = data.value;
+    console.log("SUBMIT ARTICLE");
+    console.log(article);
+    this.articleService.updateArticle(article.id, article).subscribe();
+    // this.router.navigate(['/home']);
   }
 }

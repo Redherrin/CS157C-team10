@@ -3,12 +3,12 @@ import { TextChunk } from "./text-chunk";
 import { MediaChunk } from "./media-chunk";
 
 export interface Article {
-	id: String;
-	userId: String;
+	id: string;
+	userId: string;
 	title: string;
 	subtitle: string;
 	author: string;
-	body: string;
+	// body: string;
 	date: string;
 	lastUpdatedDate: string;
 	chunks: Chunk[];

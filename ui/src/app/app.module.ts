@@ -16,6 +16,7 @@ import { UserComponent } from './components/user/user.component';
 import { LoginFormComponent } from './components/user/login-form/login-form.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserEditPageComponent } from './components/user-edit-page/user-edit-page.component';
+import { ArticleCreatorComponent } from './components/home-article-list/article-creator/article-creator.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UserEditPageComponent } from './components/user-edit-page/user-edit-pag
     LoginFormComponent,
     UserPageComponent,
     UserEditPageComponent,
+    ArticleCreatorComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { UserEditPageComponent } from './components/user-edit-page/user-edit-pag
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CreateFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
