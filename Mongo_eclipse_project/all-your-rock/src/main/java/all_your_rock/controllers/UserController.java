@@ -59,7 +59,6 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findUserById(@PathVariable("id") String id) {
-		System.out.println(id);
 		User user = userService.findUserById(id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
