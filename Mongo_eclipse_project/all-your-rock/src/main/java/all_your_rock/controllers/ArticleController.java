@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import all_your_rock.models.Article;
+import all_your_rock.models.Comment;
 import all_your_rock.services.ArticleService;
 
 import com.mongodb.client.MongoCollection;
@@ -64,6 +65,17 @@ public class ArticleController {
 	public ResponseEntity<Article> updateArticle(@PathVariable("id") String id, @RequestBody Article article){
 		try{
 			Article updatedArticle = articleService.updateArticle(id, article);
+			return new ResponseEntity<Article>(updatedArticle, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@PutMapping("/comment/{id}")
+	public ResponseEntity<Article> addComment(@PathVariable("id") String id, @RequestBody Comment comment){
+		try{
+			Article updatedArticle = articleService.addComment(id, comment);
 			return new ResponseEntity<Article>(updatedArticle, HttpStatus.OK);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -79,7 +79,8 @@ export class CreateFormComponent {
       body: '',
       date: Date.now.toString(),
       lastUpdatedDate: '',
-      chunks: this.form.controls.chunks.value! as Chunk[]
+      chunks: this.form.controls.chunks.value! as Chunk[],
+      comments: []
     };
     this.articleService.createArticle(article).subscribe();
   }

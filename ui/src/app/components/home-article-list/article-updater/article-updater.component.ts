@@ -21,8 +21,9 @@ export class ArticleUpdaterComponent implements OnInit{
     lastUpdatedDate: '',
     author: '',
     body: '',
-    chunks: []
-  };;
+    chunks: [],
+    comments: []
+  };
 
   constructor(
     private route: ActivatedRoute,

@@ -21,7 +21,8 @@ export class HomeArticleListComponent implements OnInit{
     lastUpdatedDate: '',
     author: '',
     body: '',
-    chunks: []
+    chunks: [],
+    comments: []
   };
 
   constructor(

@@ -1,5 +1,6 @@
 package all_your_rock.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -18,6 +19,7 @@ public class Article {
 	private String date;
 	private String lastUpdatedDate;
 	private List<Chunk<?>> chunks;
+	private List<Comment> comments = new ArrayList<Comment>();
 	
 	public String getId() {return id;}
 	public void setId(String id) {this.id = id;}
@@ -50,6 +52,12 @@ public class Article {
 	public String toString() {
 		return "Article [id=" + id + ", title=" + title + ", subtitle=" + subtitle + ", author=" + author + ", body="
 				+ body + ", date=" + date + ", lastUpdatedDate=" + lastUpdatedDate + ", chunks=" + chunks + "]";
+	}
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 	
 

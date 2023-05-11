@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import all_your_rock.models.Article;
+import all_your_rock.models.Comment;
 
 @Service
 public class ArticleService {
@@ -60,6 +61,18 @@ public class ArticleService {
     	
         return mongoTemplate.save(updatedArticle);
     }
+    
+    public Article addComment(String id, Comment comment) throws Exception {
+    	Query query = new Query(Criteria.where("_id").is(id));
+        Article updatedArticle = mongoTemplate.findOne(query, Article.class);
+        
+        if(updatedArticle == null) {
+        	throw new Exception("Article does not exist with id " + id);
+        }
+        
+       updatedArticle.getComments().add(comment);
+       return mongoTemplate.save(updatedArticle);
+	}
 
     public void deleteArticle(String id) throws Exception {
     	Query query = new Query(Criteria.where("_id").is(id));
@@ -69,4 +82,6 @@ public class ArticleService {
     	}
         mongoTemplate.remove(query, Article.class);
     }
+
+	
 }
